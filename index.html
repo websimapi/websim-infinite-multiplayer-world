@@ -1,0 +1,126 @@
+<html>
+
+<head>
+  <title>Infinite Multiplayer World</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #222;
+      color: #fff;
+      font-family: sans-serif;
+    }
+
+    #ui {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #chat-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 200px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #chat-input {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    #asset-generation,
+    #code-generation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #asset-generation input,
+    #code-generation textarea {
+      margin-bottom: 5px;
+    }
+
+    #scene-container {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .message {
+      margin-bottom: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #presence-display {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"
+    integrity="sha512-uVeo2+EuRlJ0ehHjV56W4aqMKyCtXIMzO9Etyf4mQ8W4l7ncaEuYh7W0aa0LJZ0w5VBAH0JcEqw1FdIY2vGfw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simplex-noise@4.0.1/dist/simplex-noise.js"></script>
+  <script type="importmap">
+  {
+   "imports": {
+    "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.module.js",
+    "three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.155.0/examples/jsm/controls/OrbitControls.js"
+   }
+  }
+  </script>
+</head>
+
+<body>
+  <div id="ui">
+    <h1>Infinite World</h1>
+    <div id="asset-generation">
+      <h3>Generate Asset</h3>
+      <input type="text" id="asset-prompt" placeholder="Asset description">
+      <button id="generate-asset-button">Generate 2D Asset</button>
+    </div>
+    <div id="code-generation">
+      <h3>Generate Code</h3>
+      <textarea id="code-prompt" placeholder="Code description"></textarea>
+      <button id="generate-code-button">Generate Code</button>
+    </div>
+  </div>
+
+  <div id="scene-container"></div>
+
+  <div id="chat-container">
+    <div id="chat-messages"></div>
+    <input type="text" id="chat-input" placeholder="Type your message...">
+  </div>
+
+  <div id="presence-display">
+    Connected users: <span id="presence-count">0</span>
+  </div>
+
+  <script type="module" src="script.js"></script>
+  <script type="module" src="config.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+</html>
